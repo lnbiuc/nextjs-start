@@ -2,9 +2,11 @@ import Nav from '@/app/ui/Nav';
 
 export default function Home() {
 	return (
-		<main className="flex min-h-screen flex-col items-center justify-between p-24">
+		<main>
 			<Nav />
-			<h1>hello world</h1>
+			<div className="min-h-[100vh]">hello</div>
+			<div className="min-h-[100vh]">hello</div>
+			<div className="min-h-[100vh]">hello</div>
 		</main>
 	);
 }

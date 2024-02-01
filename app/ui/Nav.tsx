@@ -1,30 +1,32 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import '@/app/globals.css';
+import { Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button } from '@nextui-org/react';
+import ThemeChange from '@/app/ui/ThemeChange';
+import { useState } from 'react';
 
 export default function Nav() {
-	const pathname = usePathname();
+	const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 	return (
-		<nav className="flex flex-col items-center justify-between p-24">
-			<ul>
-				<li>
-					<Link href="/" className={`${pathname === '/' ? 'text-violet' : ''}`}>
-						home
-					</Link>
-				</li>
-				<li>
-					<Link href="/blog" className={`${pathname === '/blog' ? 'text-green' : ''}`}>
-						blog
-					</Link>
-				</li>
-				<li>
-					<Link href="/about" className={`${pathname === '/about' ? 'active' : ''}`}>
-						about
-					</Link>
-				</li>
-			</ul>
-		</nav>
+		<Navbar shouldHideOnScroll>
+			<NavbarBrand>
+				<p className="font-bold text-inherit">Violet</p>
+			</NavbarBrand>
+			<NavbarContent className="hidden sm:flex gap-4" justify="center">
+				<NavbarItem>
+					<Link href="/">Home</Link>
+				</NavbarItem>
+				<NavbarItem>
+					<Link href="/blog">Blog</Link>
+				</NavbarItem>
+				<NavbarItem>
+					<Link href="/about">About</Link>
+				</NavbarItem>
+			</NavbarContent>
+			<NavbarContent justify="end">
+				<ThemeChange />
+			</NavbarContent>
+		</Navbar>
 	);
 }
